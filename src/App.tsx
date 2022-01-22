@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
+
+export const App = (): JSX.Element => {
+  const [showResult, setResult] = React.useState(false);
+  const emojiClick = (): void => {
+    showResult === true ? (setResult(false)):(setResult(true)); 
+  };
+
+  const result = 
+    showResult === true ? (<div> yes </div>):(<div> </div>); 
+  
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="emoji">
+          <button className="emoji" type="button" onClick={emojiClick}>&#9994;</button>
+          <button className="emoji" type="button" onClick={emojiClick}>&#9995;</button>
+          <button className="emoji" type="button" onClick={emojiClick}>&#9996;</button>
+          {result}
+        </div>
       </header>
     </div>
   );
-}
+};
 
 export default App;
